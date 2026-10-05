@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>戸嶋瞭太 | Web Coder Portfolio</title>
+
+  <!-- 本文で使うウェイト(400)を先読みして、フォント取得の開始を早める -->
+  <link rel="preload" href="fonts/noto-sans-jp-v57-japanese_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ヘッダーナビゲーション 開始 -->
+    <header>
+      <div class="header-inner">
+        <div class="header-inner__item">
+          <a href="#">Ryota Toshima</a>
+        </div>
+        <nav class="header-inner__item" aria-label="メインナビゲーション">
+          <ul>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- ヘッダーナビゲーション 終了 -->
+
+    <main>
+
+      <!-- メインビジュアル -->
+      <div class="main-visual">
+
+        <div class="main-visual__text">
+
+          <div class="main-visual__text--sub">Web&nbsp;Design&nbsp;&amp;&nbsp;Coding</div>
+          
+          <h1>Ryota Toshima</h1>
+          
+          <ul class="main-visual__tags">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JS</li>
+          </ul>
+
+          <div class="main-visual__scroll">
+
+            <div class="main-visual__scroll-circle">
+              <svg class="main-visual__scroll-arrow"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                <path d="M12 4v16m0 0l-6-6m6 6l6-6" />
+              </svg>
+            </div>
+
+            <div class="main-visual__scroll-text">scroll Down ...</div>
+
+          </div>
+
+        </div>
+
+        <div class="main-visual__img">
+          <img src="./images/hero.jpg" alt="">
+        </div>
+
+      </div>
+      <hr>
+
+      <!-- Works -->
+      <div id="works" class="contents works">
+
+        <h2 class="contents-h2">Works</h2>
+
+        <div class="works__list">
+
+          <section class="works__item">
+            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
+            <p>ページの名前</p>
+          </section>
+
+          <section class="works__item">
+            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
+            <p>ページの名前</p>
+          </section>
+
+          <section class="works__item">
+            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
+            <p>ページの名前</p>
+          </section>
+
+          <section class="works__item">
+            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
+            <p>ページの名前</p>
+          </section>
+
+          <section class="works__item">
+            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
+            <p>ページの名前</p>
+          </section>
+
+          <section class="works__item">
+            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
+            <p>ページの名前</p>
+          </section>
+
+        </div>
+
+      </div>
+      <hr>
+
+      <!-- About -->
+      <div id="about" class="contents about">
+
+        <h2 class="contents-h2">About</h2>
+
+        <p>
+          2000年生まれ。東京都在住。<br>
+          東北電子専門学校 WEBクリエイター科を卒業後、インハウスWEBデザイナー、コーダーとして3年勤務。<br>
+          無駄のないデザイン、コードが好きです。
+        </p>
+
+      </div>
+      <hr>
+
+      <!-- Contact -->
+      <div id="contact" class="contents contact">
+        <h2 class="contents-h2">Contact</h2>
+
+        <!-- action: Formspree(フォーム送信代行サービス)の送信先URL。実際の送信はjs/main.jsのfetch()経由で行う -->
+        <form class="contact-form" action="https://formspree.io/f/mwlpgdak" method="POST">
+
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="name">
+              お名前
+              <span class="contact-form__badge contact-form__badge--required">必須</span>
+            </label>
+            <input class="contact-form__input" type="text" id="name" name="name" placeholder="山田 太郎" required>
+          </div>
+
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="company">
+              会社名
+              <span class="contact-form__badge contact-form__badge--optional">任意</span>
+            </label>
+            <input class="contact-form__input" type="text" id="company" name="company" placeholder="株式会社サンプル">
+          </div>
+
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="email">
+              メールアドレス
+              <span class="contact-form__badge contact-form__badge--required">必須</span>
+            </label>
+            <input class="contact-form__input" type="email" id="email" name="email" placeholder="Sample@email.com" required>
+          </div>
+
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="message">
+              お問い合わせ内容
+              <span class="contact-form__badge contact-form__badge--required">必須</span>
+            </label>
+            <textarea class="contact-form__textarea" id="message" name="message" placeholder="お問い合わせ内容をお書きください。" required></textarea>
+          </div>
+
+          <button class="btn contact-form__submit" type="submit">以上の内容で送信する</button>
+
+        </form>
+
+      </div>
+      <hr>
+
+    </main>
+
+    <footer>
+      <p>&copy;&nbsp;2026&nbsp;Ryota&nbsp;Toshima</p>
+    </footer>
+
+  </div>
+
+  <!--
+    送信結果ポップアップ。最初はhidden属性で非表示にしておき、
+    js/main.jsが送信成功/失敗に応じて文言を書き換えてから表示する。
+    containerの外に置くことで、どのセクションの上にも重なって表示できるようにしている
+  -->
+  <div class="popup" id="popup" hidden>
+    <div class="popup__overlay" data-popup-close></div>
+    <div class="popup__box" role="alertdialog" aria-live="assertive">
+      <button class="popup__close" type="button" aria-label="閉じる" data-popup-close>×</button>
+      <!--
+        svgとテキストを別要素に分けている理由:
+        js/main.jsはテキスト部分だけをtextContentで書き換えるため、
+        もしsvgとテキストを同じ要素に入れると、書き換えるたびにsvgごと消えてしまう
+      -->
+      <p class="popup__message">
+        <!-- メールアイコン -->
+        <svg class="popup__message-icon" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M633-80 472-241l43-43 118 118 244-244 43 43L633-80ZM478-527l334-213H144l334 213Zm0 60L140-684v452h256l60 60H140q-24 0-42-18t-18-42v-508q0-24 18-42t42-18h677q24 0 42 18t18 42v244l-60 60v-248L478-467Zm1 9Zm-1-69Zm1 60Z"/>
+        </svg>
+        <span class="popup__message-text"></span>
+      </p>
+      <!-- 送信した内容の確認用。js/main.jsがdt(項目名)/dd(入力値)を組み立てて差し込む -->
+      <dl class="popup__summary"></dl>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

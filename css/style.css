@@ -1,0 +1,479 @@
+@charset "UTF-8";
+
+/* ================================================
+    フォント(セルフホスティング)
+    japanese_latinサブセット(日本語+英数字を含む)
+=================================================== */
+@font-face {
+    font-family: "Noto Sans JP";
+    src: url("../fonts/noto-sans-jp-v57-japanese_latin-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Noto Sans JP";
+    src: url("../fonts/noto-sans-jp-v57-japanese_latin-500.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Noto Sans JP";
+    src: url("../fonts/noto-sans-jp-v57-japanese_latin-600.woff2") format("woff2");
+    font-weight: 600;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Noto Sans JP";
+    src: url("../fonts/noto-sans-jp-v57-japanese_latin-700.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ================================================
+    リセットCSS　開始
+=================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* aタグのリセット */
+a {
+    color: inherit; /* デフォルトの青文字をやめて、親要素の文字色を継承する */
+    text-decoration: none; /* デフォルトの下線を消す */
+    transition: opacity 0.2s ease; /* ホバー時のopacity変化を滑らかにする */
+
+    &:hover {
+        opacity: 0.7; /* ホバー時に少し薄くして、反応していることを示す */
+    }
+}
+
+/* ul・liのリセット */
+ul,
+li {
+    list-style: none; /* デフォルトの黒丸・番号を消す */
+}
+
+/* imgタグのリセット */
+img {
+    display: block; /* デフォルトはinlineなので、画像下にできる余計な隙間をなくす */
+    max-width: 100%; /* 親要素の幅を超えないようにする(レスポンシブ対応の基本) */
+    height: auto; /* 幅に合わせて高さを自動調整し、縦横比を保つ */
+}
+
+/* input・textarea・buttonのリセット */
+input,
+textarea,
+button {
+    font: inherit; /* フォーム部品はデフォルトで親要素のフォントを継承しないため明示的に指定 */
+    color: inherit;
+}
+
+/* textareaのリセット */
+textarea {
+    resize: vertical; /* 横方向のリサイズを禁止し、縦方向だけ可能にする(横に伸びてレイアウトが崩れるのを防ぐ) */
+}
+
+/* buttonのリセット */
+button {
+    background: none; /* デフォルトの灰色の背景を消す */
+    border: none; /* デフォルトの枠線を消す */
+    cursor: pointer; /* クリックできることが分かるよう指マークにする */
+}
+
+/* labelのリセット */
+label {
+    display: block; /* デフォルトはinlineなので、1行で独立させて下の入力欄と縦に並べやすくする */
+    cursor: pointer; /* クリックで対応するinputにフォーカスが当たることを示す */
+}
+
+/* spanのリセット */
+span {
+    display: inline-block; /* デフォルトのinlineのままだとpaddingやline-heightが効きにくいため、バッジなどに使いやすくしておく */
+}
+
+/* svgのリセット */
+svg {
+    display: block; /* デフォルトはinlineなので、imgと同じく下にできる余計な隙間をなくす */
+    flex-shrink: 0; /* flexの横並びの中で、他の要素に押されて潰れないようにする */
+}
+
+/* ================================================
+    リセットCSS　終了
+=================================================== */
+
+/* アニメーション */
+@keyframes scroll-bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(.4rem);
+    }
+}
+
+html {
+    font-size: 16px;
+}
+
+/* smpは14px */
+@media (max-width: 900px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* 基本の文字設定 */
+body {
+    color: #222;
+    font-family: "Noto Sans JP", sans-serif;
+   line-height: 1.7; /* 行間を広めに取って読みやすくする(本文は1.5〜1.8あたりが目安) */
+}
+
+/* テキスト基本 */
+div ,p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+h1 {
+    font-weight: 700;
+}
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* 共通ボタン */
+.btn {
+    display: inline-block;
+    padding: .75rem 4rem;
+    border-radius: 99rem; /* 大きい値を指定して完全な丸(ピル形状)にする */
+    background-color: #FF0000;
+    color: #fff;
+    text-align: center;
+    transition: opacity .2s ease;
+}
+
+.btn:hover {
+    opacity: .8; /* ホバー時に少し薄くして反応を示す */
+}
+
+/* メインコンテンツの横幅 */
+.container {
+    max-width: 1080px; /* コンテンツの最大幅。これ以上は広がらない */
+    margin: 0 auto; /* 左右のmarginをautoにして水平方向に中央寄せ */
+    /* padding: 2rem 0; */
+}
+
+/* ヘッダーナビゲーション */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+
+        .header-inner__item {
+            display: flex;
+            gap: 1.5rem;
+
+            ul {
+                display: flex;
+                gap: 1.5rem;
+            }
+        }
+    }
+
+}
+
+.main-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 4rem 4rem;
+
+    .main-visual__text {
+        position: relative;
+
+        .main-visual__text--sub {
+            font-size: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-top: -0.8rem;
+        }
+    }
+
+    .main-visual__tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: .5rem;
+
+        li {
+            padding: 0.3rem 0.9rem;
+            border-radius: 0.5rem; /* 角丸(remで指定するとフォントサイズに連動してスケールする) */
+            background-color: #54524d;
+            color: #fff;
+            font-size: 0.875rem;
+        }
+    }
+
+    .main-visual__img {
+        width: 20rem;
+        height: 20rem; /* 幅と高さを揃えて正円にする */
+        border-radius: 50%; /* 正方形を円形に切り抜く */
+        object-fit: cover; /* 縦横比を保ったまま円の中を隙間なく埋める */
+        overflow: hidden;
+        /* margin: 0 6rem 0 0; */
+    }
+
+    /* スクロールダウン */
+    .main-visual__scroll {
+        position: absolute;
+        bottom: -4rem;
+        left: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .main-visual__scroll-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid #222;
+            border-radius: 50%; /* 丸いバッジ */
+            animation: scroll-bounce 1.6s ease-in-out infinite; /* バッジごと上下に弾ませる */
+        }
+
+        .main-visual__scroll-arrow {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+
+    .main-visual {
+        flex-direction: column-reverse;
+        text-align: center;
+        /* align-items: flex-start; */
+        padding: 2rem 0rem 6rem;
+
+        .main-visual__text--sub {
+            text-align: start;
+        }
+
+        .main-visual__scroll {
+            bottom: -3.5rem;
+        }
+
+        .main-visual__img {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+/* Works以下の共通コンテンツ */
+.contents {
+    padding: 2rem 4rem 3rem;
+
+    .contents-h2 {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .contents {
+        padding: 1.5rem 2rem 3rem;
+    }
+}
+
+.works {
+
+    .works__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 2rem;
+    }
+
+    .works__item {
+        width: calc( (100% / 3) - 1.3rem);
+    }
+}
+
+@media (max-width: 900px) {
+    .works {
+        .works__item {
+            width: calc( (100% / 2) - .8rem);
+        }
+    }
+}
+
+/* ================================================
+    Contact
+=================================================== */
+.contact-form {
+
+    .contact-form__group {
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-form__label {
+        display: flex;
+        align-items: center;
+        margin-bottom: .2rem;
+
+        /* 必須、任意アイコン共通 */
+        .contact-form__badge {
+            color: #fff;
+            margin-left: .5em;
+            padding: .1em .6em .2em;
+            font-size: .7rem;
+            border-radius: 99rem;
+        }
+
+        /* 必須アイコン */
+        .contact-form__badge--required {
+            background-color: #FF0000;
+        }
+        /* 任意アイコン */
+        .contact-form__badge--optional {
+            background-color: #ACACAC;
+        }
+    }
+
+    /* インプットのテキストエリア */
+    .contact-form__input,
+    .contact-form__textarea {
+        padding: .5rem;
+    }
+    .contact-form__textarea {
+        height: 10em;
+    }
+
+    /* 個別のサイズ変更 */
+    #name.contact-form__input {
+        width: 30%;
+    }
+    #company.contact-form__input {
+        width: 50%;
+    }
+    #email.contact-form__input {
+        width: 50%;
+    }
+    #message.contact-form__textarea {
+        width: 70%;
+    }
+
+}
+
+/* ================================================
+    送信結果ポップアップ
+=================================================== */
+.popup {
+    position: fixed; /* スクロール位置に関係なく、常に画面を基準に配置する */
+    inset: 0; /* top/right/bottom/left をすべて0にして画面全体を覆う */
+    z-index: 100; /* ヘッダー(z-index: 10000)より手前に出したい場合はさらに大きい値にする */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* hidden属性が付いている間は非表示にする(JSでhidden属性を付け外しして表示/非表示を切り替える) */
+    &[hidden] {
+        display: none;
+    }
+
+    .popup__overlay {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* 背景を薄暗くして、ポップアップに注目させる */
+    }
+
+    .popup__box {
+        position: relative; /* 閉じるボタンをabsoluteで右上に置くための基準にする */
+        width: min(90%, 35rem); /* 画面が狭い時は90%、広い時は最大35remまでに収める */
+        padding: 2.5rem 1.5rem 2.5rem;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        text-align: center;
+
+        /* フォームが長くなった場合の処理 */
+        max-height: 80vh;
+        overflow-y: scroll;
+    }
+
+    .popup__close {
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.25rem;
+        line-height: 1;
+    }
+
+    .popup__message {
+        display: flex;
+        gap: .4rem;
+        font-size: 1rem;
+        white-space: pre-line; /* JS側の文字列に含めた \n を、そのまま改行として表示する */
+        align-items: center;
+
+        .popup__message-icon {
+            width: 2rem; /* 仮で大きくして、変化が分かるか確認用 */
+            height: 2rem;
+            color: #0065ff;
+        }
+    }
+
+    /* 送信内容の確認リスト。メッセージはcenterだが、こちらは項目名/値が左揃えの方が読みやすい */
+    .popup__summary {
+        margin-top: 1.5rem;
+        text-align: left;
+
+        dt {
+            margin-top: .75rem;
+            color: #767676;
+            font-size: .8rem;
+        }
+
+        dd {
+            margin-top: .1rem;
+        }
+
+        dt:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .contact-form {
+        
+        /* 個別のサイズ変更 */
+        #name.contact-form__input,
+        #company.contact-form__input,
+        #email.contact-form__input,
+        #message.contact-form__textarea {
+            width: 100%;
+        }
+    }
+}
+
+
+/* フッター */
+footer {
+    padding: 1.5rem 2em;
+    text-align: end;
+}
