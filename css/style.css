@@ -167,7 +167,9 @@ h2 {
     /* padding: 2rem 0; */
 }
 
-/* ヘッダーナビゲーション */
+/* ================================================
+    header 
+=================================================== */
 header {
     position: sticky;
     top: 0;
@@ -191,6 +193,9 @@ header {
 
 }
 
+/* ================================================
+    main-visual 
+=================================================== */
 .main-visual {
     position: relative;
     display: flex;
@@ -292,7 +297,10 @@ header {
     }
 }
 
-/* Works以下の共通コンテンツ */
+
+/* ================================================
+    works以下共通
+=================================================== */
 .contents {
     padding: 2rem 4rem 3rem;
 
@@ -307,24 +315,34 @@ header {
     }
 }
 
+
+/* ================================================
+    works
+=================================================== */
 .works {
 
     .works__list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        row-gap: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
     }
 
     .works__item {
-        width: calc( (100% / 3) - 1.3rem);
+        min-width: 0;
+
+        & img {
+            border: 1px solid #bbbbbb;
+            border-radius: 5px;
+        }
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .works {
-        .works__item {
-            width: calc( (100% / 2) - .8rem);
+        .works__list {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
         }
     }
 }
@@ -388,7 +406,7 @@ header {
 }
 
 /* ================================================
-    送信結果ポップアップ
+    popup
 =================================================== */
 .popup {
     position: fixed; /* スクロール位置に関係なく、常に画面を基準に配置する */
@@ -481,8 +499,118 @@ header {
 }
 
 
-/* フッター */
+/* ================================================
+    footer
+=================================================== */
 footer {
     padding: 1.5rem 2em;
     text-align: end;
+}
+
+/* 作品カードのボタン */
+.works__button {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+/* 作品名 */
+.works__name {
+    display: block;
+    margin-top: .5rem;
+}
+
+/* 作品カードのフォーカス */
+.works__button:focus-visible {
+    outline: 2px solid #0065ff;
+    outline-offset: 5px;
+    border-radius: 5px;
+}
+
+/* 作品仕様書のモーダル */
+.work-modal {
+    width: min(90%, 48rem);
+    max-height: 85vh;
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: .75rem;
+    color: inherit;
+    background: #fff;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+/* モーダルの背景 */
+.work-modal::backdrop {
+    background: rgba(0, 0, 0, .6);
+}
+
+/* モーダル表示中のページ */
+html:has(.work-modal[open]) {
+    overflow: hidden;
+}
+
+/* 仕様書の本文 */
+.work-modal__body {
+    position: relative;
+    padding: 3.5rem 2rem 2rem;
+}
+
+/* 閉じるボタン */
+.work-modal__close {
+    position: absolute;
+    top: .5rem;
+    right: .75rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* 作品画像 */
+.work-modal__image {
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+/* 作品タイトル */
+.work-modal__title {
+    margin-top: .5rem;
+    font-size: 1.5rem;
+}
+
+/* 仕様書の項目 */
+.work-modal__spec dt {
+    margin-top: 1.25rem;
+    font-weight: 700;
+}
+
+/* 仕様書の説明 */
+.work-modal__spec dd {
+    margin: .35rem 0 0;
+    overflow-wrap: anywhere;
+}
+
+/* 公開サイトへのリンク */
+.work-modal__link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: #0065ff;
+    text-decoration: underline;
+    text-underline-offset: .2em;
+}
+
+/* 別タブの案内 */
+.work-modal__link-note {
+    font-size: .8rem;
+}
+
+@media (max-width: 600px) {
+    /* 仕様書の本文 */
+    .work-modal__body {
+        padding: 3.5rem 1.25rem 1.5rem;
+    }
 }

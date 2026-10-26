@@ -69,7 +69,7 @@
         </div>
 
         <div class="main-visual__img">
-          <img src="./images/hero.jpg" alt="">
+          <img src="./images/hero.webp" alt="プロフィール画像">
         </div>
 
       </div>
@@ -83,33 +83,17 @@
         <div class="works__list">
 
           <section class="works__item">
-            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
-            <p>ページの名前</p>
+            <button class="works__button" type="button" data-work-open="work-portfolio" aria-haspopup="dialog" aria-controls="work-portfolio">
+              <img src="./images/banner/Banner-portfolio.webp" alt="ポートフォリオ" loading="lazy">
+              <span class="works__name">ポートフォリオサイト(自主制作)</span>
+            </button>
           </section>
 
           <section class="works__item">
-            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
-            <p>ページの名前</p>
-          </section>
-
-          <section class="works__item">
-            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
-            <p>ページの名前</p>
-          </section>
-
-          <section class="works__item">
-            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
-            <p>ページの名前</p>
-          </section>
-
-          <section class="works__item">
-            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
-            <p>ページの名前</p>
-          </section>
-
-          <section class="works__item">
-            <img src="./images/worksBanner_gray.jpg" alt="ページの名前">
-            <p>ページの名前</p>
+            <button class="works__button" type="button" data-work-open="work-sale" aria-haspopup="dialog" aria-controls="work-sale">
+              <img src="./images/banner/banner-sale.webp" alt="セールページ" loading="lazy">
+              <span class="works__name">セールページ(自主制作)</span>
+            </button>
           </section>
 
         </div>
@@ -185,11 +169,7 @@
 
   </div>
 
-  <!--
-    送信結果ポップアップ。最初はhidden属性で非表示にしておき、
-    js/main.jsが送信成功/失敗に応じて文言を書き換えてから表示する。
-    containerの外に置くことで、どのセクションの上にも重なって表示できるようにしている
-  -->
+  <!-- 送信結果ポップアップ -->
   <div class="popup" id="popup" hidden>
     <div class="popup__overlay" data-popup-close></div>
     <div class="popup__box" role="alertdialog" aria-live="assertive">
@@ -210,6 +190,54 @@
       <dl class="popup__summary"></dl>
     </div>
   </div>
+
+  <!-- ポートフォリオサイトの仕様書：各項目の文章を編集してください -->
+  <dialog class="work-modal" id="work-portfolio" aria-labelledby="work-portfolio-title">
+    <div class="work-modal__body">
+      <form method="dialog" class="work-modal__close-form">
+        <button class="work-modal__close" type="submit" aria-label="閉じる" autofocus>&times;</button>
+      </form>
+      <img class="work-modal__image" src="./images/banner/Banner-portfolio.webp" alt="" loading="lazy">
+      <h2 class="work-modal__title" id="work-portfolio-title">ポートフォリオサイト</h2>
+      <dl class="work-modal__spec">
+        <dt>概要</dt>
+        <dd>制作実績とプロフィールを紹介するポートフォリオサイトです。</dd>
+        <dt>使用技術</dt>
+        <dd>HTML&#32;&#47;&#32;CSS&#32;&#47;&#32;JavaScript</dd>
+        <dt>制作範囲</dt>
+        <dd>デザイン/コーディング</dd>
+        <dt>実装内容</dt>
+        <dd>レスポンシブ対応/作品詳細モーダル/メールフォーム</dd>
+        <dt>制作期間</dt>
+        <dd>約2週間（デザイン・実装・動作確認を含む）</dd>
+      </dl>
+      <a class="work-modal__link" href="https://ryota-toshima410.github.io/portfolio/" target="_blank" rel="noopener noreferrer">公開サイトを見る<span class="work-modal__link-note">（別タブで開きます）</span></a>
+    </div>
+  </dialog>
+
+  <!-- セールページの仕様書：各項目の文章を編集してください -->
+  <dialog class="work-modal" id="work-sale" aria-labelledby="work-sale-title">
+    <div class="work-modal__body">
+      <form method="dialog" class="work-modal__close-form">
+        <button class="work-modal__close" type="submit" aria-label="閉じる" autofocus>&times;</button>
+      </form>
+      <img class="work-modal__image" src="./images/banner/banner-sale.webp" alt="" loading="lazy">
+      <h2 class="work-modal__title" id="work-sale-title">セールページ</h2>
+      <dl class="work-modal__spec">
+        <dt>概要</dt>
+        <dd>カテゴリーによる絞り込みと価格による並び替えができるセールページです。</dd>
+        <dt>使用技術</dt>
+        <dd>React&#32;&#47;&#32;Vite&#32;&#47;&#32;CSS</dd>
+        <dt>制作範囲</dt>
+        <dd>デザイン/コーディング</dd>
+        <dt>工夫した点</dt>
+        <dd>レスポンシブ対応/カテゴリー絞り込み/各種並び替え/お気に入りアイコン/画像のWebP化による軽量化/画像の遅延読み込み</dd>
+        <dt>制作期間</dt>
+        <dd>約2週間（デザイン・実装・動作確認を含む）</dd>
+      </dl>
+      <a class="work-modal__link" href="https://ryota-toshima410.github.io/sale-page/" target="_blank" rel="noopener noreferrer">公開サイトを見る<span class="work-modal__link-note">（別タブで開きます）</span></a>
+    </div>
+  </dialog>
 
   <script src="js/main.js"></script>
 </body>
